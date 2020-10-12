@@ -1,0 +1,37 @@
+*{
+    box-sizing: border-box;
+}
+html, body{
+    background:gray;
+    margin:0;
+    height:100%;
+    display:flex;
+    justify-content: center;
+    align-items: center; 
+}
+.elements{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+.grid-container{
+    height:60vh;
+    width: 60vh;
+    background:black;
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-gap:15px;
+}
+
+.box{
+    background:white;
+}
+
+.red{
+    background:red;
+}
+
+.blue{
+    background:blue;
+}
