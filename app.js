@@ -63,27 +63,25 @@ function changeClass(element){
        element.classList.add('red');
        player1Boxes.push(element)
        changePlayer()
+       checkForWinner()
     }else if(player2.active == true){
         element.classList.add('blue')
         player2Boxes.push(element)
         changePlayer()
+        checkForWinner()
     }else{
         console.log('error')
     }
 }
 
-
 //functin to convert saved data from players arrays into a simple data structure
 function transformDataSet(array, array2){
     for(let i = 0; i <array.length; i++){
         let values = array[i].dataset.value;
-        // console.log(values)
         array2.push(values)
-        // console.log(array2)
     }
     return array2
 }
-
 
 
 
@@ -92,19 +90,23 @@ function checkForWinner(){
     //get the arrays of each data value in each players array
     transformDataSet(player1Boxes, p1Final)
     transformDataSet(player2Boxes, p2Final)
-    console.log(p1Final)
-    console.log(p2Final)
-    //loop through winning array
-    // for(let i = 0; i <winningCombinations.length;i++){
-    // //second loop to loop through each array element
-    //     for(let j =0; i<winningCombinations[i].length;i++){
-    //         //now looping through elements in each index of the array
-    //         //check to see if each element in each index have the same classlist
-    //         if (p1Final.contains == winningCombinations[i][j]){
+    let p1 = p1Final.map(x => parseInt(x))
+    let p2= p2Final.map(x => parseInt(x))
 
-    //         }
-    //     }
-    // }
+    // loop through winning array
+    for(let i = 0; i <winningCombinations.length;i++){
+       //
+        let checker = (arr, target) => target.every(v => arr.includes(v));
+        // console.log(checker(p1, winningCombinations[i]))
+        // console.log(checker(p2, winningCombinations[i]))
+
+        if(checker(p1, winningCombinations[i]) == true){
+            console.log("Player 1 winner")    
+        }else if (checker(p2, winningCombinations[i]) == true){
+            console.log("Player 2 winner")
+        }
+    }
 }
+
 
 
